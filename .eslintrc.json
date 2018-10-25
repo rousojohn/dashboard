@@ -15,7 +15,7 @@
     },
     "plugins": ["react"],
     "rules": {
-        "indent": ["error", 2],
+        "indent": ["error", "tab"],
         "semi": ["error", "always"],
         "linebreak-style": ["error", "unix"],
         "quotes": ["error", "double"]
