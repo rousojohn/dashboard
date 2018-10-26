@@ -2,7 +2,7 @@ import React from 'react'
 import Header from './Header'
 import BigText from './BigText'
 import axios from 'axios'
-import PaneBadge from './PanelBadge'
+import PanelBadge from './PanelBadge'
 import GridPanel from './GridPanel'
 import {ListGroup, ListGroupItem, Grid, Row, Col} from 'react-bootstrap'
 
@@ -48,7 +48,7 @@ componentDidMount() {
         <Grid>
           <Row>
         {
-          _stats.map(stat => <Col md={3} key={stat.id} ><PaneBadge {...stat} /></Col>)
+          _stats.map(stat => <Col md={3} key={stat.id} ><PanelBadge {...stat} /></Col>)
         }
         </Row>
         </Grid>
