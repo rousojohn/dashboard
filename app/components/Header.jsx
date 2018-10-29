@@ -1,10 +1,7 @@
 import React from 'react'
 import { Navbar, Nav, NavItem} from 'react-bootstrap'
 import {NavLink, Link, Route} from 'react-router-dom'
-
-const _whiteBG = {
-  'color' : 'white'
-};
+import '../app.css'
 
 const Header = () => {
   return (
@@ -15,10 +12,18 @@ const Header = () => {
           </Navbar.Brand>
         </Navbar.Header>
         <Nav>
-            <NavLink to='/courses'>Courses</NavLink>
+          <>
+            <li role='presentation'>
+              <Link to='/courses' >Courses</Link>
+            </li>
+          </>
         </Nav>
         <Nav pullRight>
-            <NavLink to='/add-course'>Add new course</NavLink>
+        <>
+            <li role='presentation'>
+              <Link to='/add-course' >Add Course</Link>
+            </li>
+          </>
         </Nav>
       </Navbar>
   )
