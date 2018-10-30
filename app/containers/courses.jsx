@@ -7,7 +7,7 @@ import BigText from '../components/BigText'
 
 const Courses = () =>  (
         <div>
-            <Header/>
+            
             <BigText header='Courses' text='Hello, I am Courses!'/>
         </div>
     );

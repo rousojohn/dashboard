@@ -43,7 +43,6 @@ componentDidMount() {
     console.log('========> ', _courses)
     return (
       <div>
-        <Header />
         <BigText header='Welcome to Code.Hub Dashboard!' text='Manage everything and have fun!' />
         <Grid>
           <Row>

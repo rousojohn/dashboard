@@ -1,31 +1,31 @@
 import React from 'react'
-import { Navbar, Nav, NavItem} from 'react-bootstrap'
-import {NavLink, Link, Route} from 'react-router-dom'
+//import { Navbar, Nav, NavItem} from 'react-bootstrap'
+import {Link} from 'react-router-dom'
 import '../app.css'
 
 const Header = () => {
   return (
-      <Navbar>
-        <Navbar.Header>
-          <Navbar.Brand>
-            <NavLink to='/'>Code.Hub Dashboard</NavLink>
-          </Navbar.Brand>
-        </Navbar.Header>
-        <Nav>
-          <>
+    <nav className="navbar navbar-default horizontal-navbar">
+    <div className='container'>
+      <div className="navbar-header">
+		    <Link to='/' className='navbar-brand'>Code.Hub Dashboard</Link>
+      </div>
+      <div className='links-navbar-div'>
+        <div className='btn-nav'>
+          <ul className='nav navbar-nav'>
             <li role='presentation'>
-              <Link to='/courses' >Courses</Link>
+              <Link to='/courses'>Courses</Link>
             </li>
-          </>
-        </Nav>
-        <Nav pullRight>
-        <>
-            <li role='presentation'>
-              <Link to='/add-course' >Add Course</Link>
-            </li>
-          </>
-        </Nav>
-      </Navbar>
+          </ul>
+          <ul className='nav navbar-nav navbar-right'>
+			      <li role='presentation'>
+				      <Link to='/add-course'>Add Course</Link>
+			      </li>
+          </ul>
+        </div>
+       </div>
+     </div>
+  </nav>
   )
 }
 
