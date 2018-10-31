@@ -1,6 +1,6 @@
 import React from 'react'
 //import { Navbar, Nav, NavItem} from 'react-bootstrap'
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import '../app.css'
 
 const Header = () => {
@@ -8,18 +8,18 @@ const Header = () => {
     <nav className="navbar navbar-default horizontal-navbar">
     <div className='container'>
       <div className="navbar-header">
-		    <Link to='/' className='navbar-brand'>Code.Hub Dashboard</Link>
+		    <NavLink to='/' className='navbar-brand'>Code.Hub Dashboard</NavLink>
       </div>
       <div className='links-navbar-div'>
         <div className='btn-nav'>
           <ul className='nav navbar-nav'>
             <li role='presentation'>
-              <Link to='/courses'>Courses</Link>
+              <NavLink to='/courses'>Courses</NavLink>
             </li>
           </ul>
           <ul className='nav navbar-nav navbar-right'>
 			      <li role='presentation'>
-				      <Link to='/add-course'>Add Course</Link>
+				      <NavLink to='/add-course'>Add Course</NavLink>
 			      </li>
           </ul>
         </div>
