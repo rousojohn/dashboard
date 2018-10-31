@@ -1,0 +1,7 @@
+{
+    "ApiServer": "localhost",
+    "ApiPort": 3000,
+    "CoursesEndpoint": "/courses",
+    "StatsEndpoint": "/stats",
+    "IntstructorsEndpoint": "/instructors"
+}

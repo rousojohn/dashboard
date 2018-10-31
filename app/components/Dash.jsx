@@ -5,6 +5,8 @@ import axios from 'axios'
 import PanelBadge from './PanelBadge'
 import GridPanel from './GridPanel'
 import {ListGroup, ListGroupItem, Grid, Row, Col} from 'react-bootstrap'
+import CourseModel from '../models/CourseModel'
+import StatsModel from '../models/StatsModel'
 
 const ListGroupCss = {
   '&::after': {
@@ -27,20 +29,17 @@ class Dash extends React.Component {
     }
   }
 
-componentDidMount() {
-  axios.get('http://localhost:3000/stats').then(_stats => {
-    this.setState({stats: _stats.data})
-  })
-
-  axios.get('http://localhost:3000/courses').then(_courses => {
-    this.setState({courses: _courses.data})
-  })
+async componentDidMount() {
+  
+  let _courses = await CourseModel.getAll()
+  let _stats = await StatsModel.getAll()
+  
+  this.setState({courses: _courses, stats: _stats})
 }
 
   render () {
     const _stats = this.state.stats;
     const _courses = this.state.courses;
-    console.log('========> ', _courses)
     return (
       <div>
         <BigText header='Welcome to Code.Hub Dashboard!' text='Manage everything and have fun!' />
