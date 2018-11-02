@@ -15,8 +15,8 @@ ReactDOM.render(
     <Header/>
     <Switch>
       <Route exact path="/" component={Dash}/>
-      <Route path='/courses' component={Courses}/>
-      <Route path='/courses/:course' component={Courses}/>
+      <Route strict exact path='/courses' component={Courses}/>
+      <Route path='/courses/:course' component={AddCourses}/>
       <Route path='/add-course' component={AddCourses}/>
     </Switch>
   </>
