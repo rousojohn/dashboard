@@ -1,11 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
-import Dash from './components/Dash'
-import Courses from './containers/courses'
-import NotFound from './containers/notFound'
-import AddCourses from './containers/addCourse'
-import Header from './components/Header'
+import { Dash, Courses, NotFound, AddCourse, ViewCourse } from './containers'
+import { Header } from './components'
 import '././app.css'
 
 
@@ -15,9 +12,9 @@ ReactDOM.render(
     <Header/>
     <Switch>
       <Route exact path="/" component={Dash}/>
-      <Route path='/courses' component={Courses}/>
-      <Route path='/courses/:course' component={Courses}/>
-      <Route path='/add-course' component={AddCourses}/>
+      <Route exact path='/courses' component={Courses}/>
+      <Route path='/courses/:id' component={ViewCourse}/>
+      <Route path='/add-course' component={AddCourse}/>
     </Switch>
   </>
   </BrowserRouter>,

@@ -1,32 +1,24 @@
 import React from 'react'
-import CourseModel from '../models/CourseModel'
+// import CourseModel from '../models/CourseModel'
 import { Glyphicon, Button, Panel, Image, Grid, Col, Row } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
-import CourseCard from '../components/CourseCard'
+import { CourseCard, Loader } from '../components'
 
-class Courses extends React.Component {
-    constructor(props) {
-        super(props)
+import DataComponent from '../datacomponents/DataComponent'
+import Config from '../conf.json'
 
-        this.state = {
-            courses: []
-        }
-    }
 
-    componentDidMount = async () => {
-        let _courses = await CourseModel.getAll()
-        this.setState({courses: _courses})
-    }
-
-    render = () => {
-        const _courses = this.state.courses
-
-        return (
-            <div>
+const Courses = () => (
+    <DataComponent endpoint={Config.CoursesEndpoint}>
+    {
+        (data, isLoading) => (
+            isLoading
+            ? <Loader />
+            : <div>
                 <Grid>
                     <Row>
                         {
-                            _courses.map(course => (
+                            data.map(course => (
                                 <CourseCard key={course.id} {...course} />
                             ))
                         }
@@ -35,6 +27,7 @@ class Courses extends React.Component {
             </div>
         )
     }
-}
+    </DataComponent>
+)
 
 export default Courses;
