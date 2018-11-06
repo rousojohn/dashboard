@@ -15,11 +15,11 @@ class DataComponent extends Component {
     async componentDidMount() {
         const { endpoint } = this.props
 
-        console.log(`${Domain}${endpoint}`)
+        // console.log(`${Domain}${endpoint}`)
 
         try {
             let res = await axios(`${Domain}${endpoint}`)
-            console.log(res)
+            // console.log(res)
             this.setState({data: res.data, isLoading: false})
             
         } catch (e) {

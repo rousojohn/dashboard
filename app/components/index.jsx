@@ -8,5 +8,7 @@ import TableBody from './TableBody'
 import TableHeaders from './TableHeaders'
 import Loader from './loader/Loader'
 import CourseDetails from './CourseDetails'
+import withModal from '../components/withModal'
 
-export { BigText, CourseCard, GridPanel, GridPanelItem, Header, PanelBadge, TableBody, TableHeaders, Loader, CourseDetails }
+export { BigText, CourseCard, GridPanel, GridPanelItem, Header, PanelBadge, 
+         TableBody, TableHeaders, Loader, CourseDetails, withModal }
