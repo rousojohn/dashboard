@@ -15,13 +15,13 @@ import { Modal, Button } from 'react-bootstrap'
                         <Modal.Title>{title}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <WrappedComponent {...this.props} />
+                        <WrappedComponent {...this.props} handleClose={this.handleClose} />
                     </Modal.Body>
                     
-                    <Modal.Footer>
+                    {/* <Modal.Footer>
                         <Button onClick={this.handleClose}>Close</Button>
                         <Button bsStyle="primary" >Save changes</Button>
-                    </Modal.Footer>
+                    </Modal.Footer> */}
               </Modal.Dialog>
             )
         }

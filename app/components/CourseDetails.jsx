@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import { Image, Grid, Row, Col, Glyphicon, ButtonToolbar, Button } from 'react-bootstrap'
 
 const CourseDetails = ({id, title,imagePath,price,open,duration,dates, description}) => (
@@ -36,7 +37,9 @@ const CourseDetails = ({id, title,imagePath,price,open,duration,dates, descripti
         <Row>
             <Col>
                 <ButtonToolbar>
-                    <Button bsStyle='primary'>Edit</Button>
+                    <Button bsStyle='primary'>
+                        <NavLink to={`/edit-course/${id}`}>Edit</NavLink>
+                    </Button>
                     <Button bsStyle='danger'>Delete</Button>
                 </ButtonToolbar>
             </Col>

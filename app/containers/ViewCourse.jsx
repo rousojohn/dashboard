@@ -8,7 +8,6 @@ const ViewCourse = ({match}) => (
     <DataComponent endpoint={`${Config.CoursesEndpoint}/${match.params.id}`}>
     {
         (data, isLoading) => {
-            console.log(data)
             return (
                 isLoading
                 ? <Loader />
