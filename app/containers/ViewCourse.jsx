@@ -4,10 +4,11 @@ import DataComponent from '../datacomponents/DataComponent'
 import Config from '../conf.json'
 
 
-const ViewCourse = ({match}) => (
+const ViewCourse = ({match}, props) => (
     <DataComponent endpoint={`${Config.CoursesEndpoint}/${match.params.id}`}>
     {
         (data, isLoading) => {
+            console.log(props)
             return (
                 isLoading
                 ? <Loader />

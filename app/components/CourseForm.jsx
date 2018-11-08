@@ -72,7 +72,7 @@ class CourseForm extends React.Component {
         e.preventDefault()
         try {
             if (this.state.course.id)
-                await Put(`${Config.CoursesEndpoint}/${this.state.course.id}`, this.state.course)
+                await Put(Config.CoursesEndpoint, this.state.course.id, this.state.course)
             else
                 await Post(`${Config.CoursesEndpoint}`, this.state.course)
         } catch (e) {

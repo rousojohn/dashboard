@@ -1,6 +1,9 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, BrowserRouter } from 'react-router-dom'
 import { Image, Grid, Row, Col, Glyphicon, ButtonToolbar, Button } from 'react-bootstrap'
+import { Delete } from '../datacomponents/SaveData'
+
+import Config from '../conf.json'
 
 const CourseDetails = ({id, title,imagePath,price,open,duration,dates, description}) => (
     <Grid>
@@ -37,14 +40,26 @@ const CourseDetails = ({id, title,imagePath,price,open,duration,dates, descripti
         <Row>
             <Col>
                 <ButtonToolbar>
-                    <Button bsStyle='primary'>
-                        <NavLink to={`/edit-course/${id}`}>Edit</NavLink>
-                    </Button>
-                    <Button bsStyle='danger'>Delete</Button>
+                    <NavLink to={`/edit-course/${id}`}>
+                        <Button bsStyle='primary'>Edit</Button>
+                    </NavLink>
+                    
+                    <Button bsStyle='danger' href='/courses' onClick={(e) => deleteClick(e, id)}>Delete</Button>
                 </ButtonToolbar>
             </Col>
         </Row>
     </Grid>
 )
+
+const deleteClick = async (e, id) => {
+    try {
+        await Delete(Config.CoursesEndpoint, id)
+    }
+    catch (e) {
+        alert('Ooops something went wrong')
+        return
+    }
+    BrowserRouter.history.go(-1)
+}
 
 export default CourseDetails
