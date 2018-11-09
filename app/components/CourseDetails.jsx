@@ -1,24 +1,17 @@
 import React from 'react'
 import { NavLink, BrowserRouter } from 'react-router-dom'
-import { Image, Grid, Row, Col, Glyphicon, ButtonToolbar, Button } from 'react-bootstrap'
+import { Image, Grid, Row, Col, Glyphicon, ButtonToolbar, Button, Jumbotron } from 'react-bootstrap'
 import { Delete } from '../datacomponents/SaveData'
 import '../app.css'
 import Config from '../conf.json'
 
 const CourseDetails = ({id, title,imagePath,price,open,duration,dates, description, history}) => (
+    
     <Grid>
         <Row>
             <Col md={12}>
                 <h2>{title}&nbsp;<small>({id})</small></h2>
             </Col>
-        </Row>
-        <Row >
-            <Col md={12}>
-                <Image src={imagePath} responsive rounded/> 
-                <hr/>
-            </Col>
-        </Row>
-        <Row>
             <Col md={6}>
                 <p><strong>Price:</strong>&nbsp;{price.normal}&nbsp; <Glyphicon glyph='glyphicon glyphicon-euro' /></p>
             </Col>
@@ -26,13 +19,17 @@ const CourseDetails = ({id, title,imagePath,price,open,duration,dates, descripti
                 <p><strong>Duration:</strong>&nbsp;{duration}</p>
             </Col>
             <Col md={6}>
-                <p><strong>Bookable:</strong>&nbsp;{open ? <Glyphicon glyph='glyphicon glyphicon-ok' /> : '' }</p>
+                <p><strong>Bookable:</strong>&nbsp;{open ? <Glyphicon glyph='glyphicon glyphicon-ok' /> : <Glyphicon glyph='glyphicon glyphicon-remove' />  }</p>
             </Col>
             <Col md={6}>
                 <p><strong>Dates:</strong>&nbsp;{dates.start_date}&minus;{dates.end_date}</p>
             </Col>
         </Row>
-        <Row>
+        <Row >
+            <Col md={12}>
+                {/* <Image src={imagePath} responsive rounded className='img-fluid'/>  */}
+                <Jumbotron style={{backgroundImage: `url(${imagePath})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'top'}} className='img-fluid'></Jumbotron>
+            </Col>
             <Col md={12} dangerouslySetInnerHTML={{__html: description}}>
             </Col>
         </Row>
@@ -41,20 +38,11 @@ const CourseDetails = ({id, title,imagePath,price,open,duration,dates, descripti
                 <NavLink to={`/edit-course/${id}`}>
                     <Button bsStyle='primary'>Edit</Button>
                 </NavLink>
-            
+                &nbsp;
                 <NavLink to='/courses' onClick={(e) => deleteClick(e, id, history)}>
                     <Button bsStyle='danger'>Delete</Button>
                 </NavLink>
                 <hr/>
-                {/* <ButtonToolbar>
-
-                    <Button bsStyle='primary'>
-                        <div role='presentation'>
-                            
-                        </div>
-                    </Button>
-                    <Button bsStyle='danger'>Delete</Button>
-                </ButtonToolbar> */}
             </Col>
         </Row>
         
@@ -71,7 +59,7 @@ const deleteClick = async (e, id, history) => {
         alert('Ooops something went wrong')
         return
     }
-    //
+
 }
 
 export default CourseDetails

@@ -15,8 +15,10 @@ const CourseCard = ({id, title,imagePath,price,open,duration,dates}) => {
                     <Image src={imagePath} responsive />
                     <div>
                         Price:&nbsp;<strong>{price.normal} <Glyphicon glyph='glyphicon glyphicon-euro' /></strong>
+                        &nbsp;
                         |
-                        Bookable:&nbsp;<strong>{open ? <Glyphicon glyph='glyphicon glyphicon-ok' /> : '' } </strong>
+                        &nbsp;
+                        Bookable:&nbsp;<strong>{open ? <Glyphicon glyph='glyphicon glyphicon-ok' /> : <Glyphicon glyph='glyphicon glyphicon-remove' />  } </strong>
                     </div>
                     <div>
                         Duration:&nbsp;<strong>{duration}</strong>
@@ -25,15 +27,11 @@ const CourseCard = ({id, title,imagePath,price,open,duration,dates}) => {
                         Dates:&nbsp;<strong>{dates.start_date}&minus;{dates.end_date}</strong>
                     </div>
                     <div>
-<<<<<<< HEAD
-                        <Link to={'/courses/'+id} className='pull-right btn btn-primary' >View</Link>
-=======
                         <NavLink to={'/courses/'+id} style={navlinkStyle} >
                             <Button className='pull-right' bsStyle="primary">
                                 View
                             </Button>
                         </NavLink>
->>>>>>> c483cc226c57994cdc7cb81786023a6915d4d218
                     </div>
                 </Panel.Body>
             </Panel>

@@ -1,4 +1,15 @@
-.form-textarea-limited {
+.form-textarea-limited{
     resize: vertical;
+    -webkit-resize: vertical;
     -moz-resize: vertical;
+}
+
+.img-fluid {
+    /* height: 50%; */
+    min-height: 100px;
+    height: 400px;
+    /* width: 100%; */
+    background-repeat: no-repeat;
+    object-position: top;
+    object-fit: fill !important;
 }
