@@ -25,9 +25,11 @@ const CourseCard = ({id, title,imagePath,price,open,duration,dates}) => {
                         Dates:&nbsp;<strong>{dates.start_date}&minus;{dates.end_date}</strong>
                     </div>
                     <div>
-                        <Button className='pull-right' bsStyle="primary">
-                            <NavLink to={'/courses/'+id} style={navlinkStyle} >View</NavLink>
-                        </Button>
+                        <NavLink to={'/courses/'+id} style={navlinkStyle} >
+                            <Button className='pull-right' bsStyle="primary">
+                                View
+                            </Button>
+                        </NavLink>
                     </div>
                 </Panel.Body>
             </Panel>

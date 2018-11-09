@@ -11,10 +11,11 @@ ReactDOM.render(
   <>
     <Header/>
     <Switch>
-      <Route exact path="/" component={Dash}/>
-      <Route exact path='/courses' component={Courses}/>
-      <Route path='/courses/:id' component={ViewCourse}/>
-      <Route path='/add-course' component={AddCourse}/>
+      <Route exact path="/" component={Dash} />
+      <Route exact path='/courses' component={Courses} />
+      <Route path='/courses/:id' component={ViewCourse} />
+      <Route path='/add-course' component={AddCourse} />
+      <Route path='/edit-course/:id' component={AddCourse} />
     </Switch>
   </>
   </BrowserRouter>,

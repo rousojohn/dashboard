@@ -1,22 +1,9 @@
 import React from 'react'
-import { Image, Grid, Row, Col, Glyphicon, ButtonToolbar, Button, Thumbnail, Panel } from 'react-bootstrap'
-import { S_IFMT } from 'constants';
+import { NavLink, BrowserRouter } from 'react-router-dom'
+import { Image, Grid, Row, Col, Glyphicon, ButtonToolbar, Button } from 'react-bootstrap'
+import { Delete } from '../datacomponents/SaveData'
 
-const onBackStyle = {
-    zIndex: -1
-};
-
-const onTopStyle = {
-    zIndex: 1
-}
-
-const panelStyle= {
-    height: '70%',
-    width: '100%',
-    overflow: 'hidden'
-};
-
-
+import Config from '../conf.json'
 
 const CourseDetails = ({id, title,imagePath,price,open,duration,dates, description}) => (
     <Grid>
@@ -26,29 +13,53 @@ const CourseDetails = ({id, title,imagePath,price,open,duration,dates, descripti
             </Col>
         </Row>
         <Row>
-        <Col xs={8} md={12}>
-                <Panel className='carousel'>
-                    <Image src={imagePath} alt="242x200" responsive style={panelStyle}/>
-                    <p className='col-md-6'>
-                        <strong>Price:</strong>&nbsp;{price.normal}&nbsp;<Glyphicon glyph='glyphicon glyphicon-euro' /><br/>
-                        <strong>Duration:</strong>&nbsp;{duration}
-                    </p>
-                    <p className='col-md-6'>
-                        <strong>Bookable:</strong>&nbsp;{open ? <Glyphicon glyph='glyphicon glyphicon-ok' /> : '' }<br/>
-                        <strong>Dates:</strong>&nbsp;{dates.start_date}&minus;{dates.end_date}
-                    </p>
-                    <p>
-                    <div dangerouslySetInnerHTML={{__html: description}}></div>
-                    <hr/>
-                    <ButtonToolbar>
-                        <Button bsStyle='primary'>Edit</Button> &nbsp;
-                        <Button bsStyle='danger'>Delete</Button>
-                    </ButtonToolbar>
-                    </p>
-                </Panel>
-        </Col>
+            <Col md={12}>
+                <Image src={imagePath} mode='fit'/>
+            </Col>
+        </Row>
+        <Row>
+            <Col md={6}>
+                <p><strong>Price:</strong>&nbsp;{price.normal}&nbsp; <Glyphicon glyph='glyphicon glyphicon-euro' /></p>
+            </Col>
+            <Col md={6}>
+                <p><strong>Duration:</strong>&nbsp;{duration}</p>
+            </Col>
+        </Row>
+        <Row>
+            <Col md={6}>
+                <p><strong>Bookable:</strong>&nbsp;{open ? <Glyphicon glyph='glyphicon glyphicon-ok' /> : '' }</p>
+            </Col>
+            <Col md={6}>
+                <p><strong>Dates:</strong>&nbsp;{dates.start_date}&minus;{dates.end_date}</p>
+            </Col>
+        </Row>
+        <Row>
+            <Col md={12} dangerouslySetInnerHTML={{__html: description}}>
+            </Col>
+        </Row>
+        <Row>
+            <Col>
+                <ButtonToolbar>
+                    <NavLink to={`/edit-course/${id}`}>
+                        <Button bsStyle='primary'>Edit</Button>
+                    </NavLink>
+                    
+                    <Button bsStyle='danger' href='/courses' onClick={(e) => deleteClick(e, id)}>Delete</Button>
+                </ButtonToolbar>
+            </Col>
         </Row>
     </Grid>
 )
+
+const deleteClick = async (e, id) => {
+    try {
+        await Delete(Config.CoursesEndpoint, id)
+    }
+    catch (e) {
+        alert('Ooops something went wrong')
+        return
+    }
+    BrowserRouter.history.go(-1)
+}
 
 export default CourseDetails

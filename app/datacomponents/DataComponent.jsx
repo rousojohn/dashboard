@@ -14,12 +14,9 @@ class DataComponent extends Component {
 
     async componentDidMount() {
         const { endpoint } = this.props
-
-        console.log(`${Domain}${endpoint}`)
-
+        
         try {
             let res = await axios(`${Domain}${endpoint}`)
-            console.log(res)
             this.setState({data: res.data, isLoading: false})
             
         } catch (e) {
@@ -29,6 +26,7 @@ class DataComponent extends Component {
 
     render() {
         const { data, isLoading } = this.state
+        console.log(data)
         return this.props.children(data, isLoading)
     }
 }
