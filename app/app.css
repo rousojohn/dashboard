@@ -1,0 +1,4 @@
+.form-textarea-limited {
+    resize: vertical;
+    -moz-resize: vertical;
+}

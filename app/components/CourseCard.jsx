@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { Col, Panel, Image, Button, Glyphicon } from 'react-bootstrap'
 
 const navlinkStyle = {
@@ -25,9 +25,7 @@ const CourseCard = ({id, title,imagePath,price,open,duration,dates}) => {
                         Dates:&nbsp;<strong>{dates.start_date}&minus;{dates.end_date}</strong>
                     </div>
                     <div>
-                        <Button className='pull-right' bsStyle="primary">
-                            <NavLink to={'/courses/'+id} style={navlinkStyle} >View</NavLink>
-                        </Button>
+                        <Link to={'/courses/'+id} className='pull-right btn btn-primary' >View</Link>
                     </div>
                 </Panel.Body>
             </Panel>
