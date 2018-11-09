@@ -1,10 +1,11 @@
 import React from 'react'
-import { NavLink, Link } from 'react-router-dom'
-import { Image, Grid, Row, Col, Glyphicon, ButtonToolbar, Button, Well } from 'react-bootstrap'
+import { NavLink, BrowserRouter } from 'react-router-dom'
+import { Image, Grid, Row, Col, Glyphicon, ButtonToolbar, Button } from 'react-bootstrap'
+import { Delete } from '../datacomponents/SaveData'
 import '../app.css'
+import Config from '../conf.json'
 
-const CourseDetails = ({id, title,imagePath,price,open,duration,dates, description}) => (
-    
+const CourseDetails = ({id, title,imagePath,price,open,duration,dates, description, history}) => (
     <Grid>
         <Row>
             <Col md={12}>
@@ -38,14 +39,11 @@ const CourseDetails = ({id, title,imagePath,price,open,duration,dates, descripti
         <Row>
             <Col md={12}>
                 <NavLink to={`/edit-course/${id}`}>
-                    <Button bsStyle='primary'>
-                        Edit
-                    </Button>
-                </NavLink> &nbsp;
-                <NavLink to={`/edit-course/${id}`}>
-                    <Button bsStyle='danger'>
-                        Delete
-                    </Button>
+                    <Button bsStyle='primary'>Edit</Button>
+                </NavLink>
+            
+                <NavLink to='/courses' onClick={(e) => deleteClick(e, id, history)}>
+                    <Button bsStyle='danger'>Delete</Button>
                 </NavLink>
                 <hr/>
                 {/* <ButtonToolbar>
@@ -62,5 +60,18 @@ const CourseDetails = ({id, title,imagePath,price,open,duration,dates, descripti
         
     </Grid>
 )
+
+const deleteClick = async (e, id, history) => {
+    e.preventDefault();
+    try {
+        await Delete(Config.CoursesEndpoint, id)
+        history.go(-1)
+    }
+    catch (e) {
+        alert('Ooops something went wrong')
+        return
+    }
+    //
+}
 
 export default CourseDetails

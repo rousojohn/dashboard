@@ -4,14 +4,14 @@ import DataComponent from '../datacomponents/DataComponent'
 import Config from '../conf.json'
 
 
-const ViewCourse = ({match}) => (
-    <DataComponent endpoint={`${Config.CoursesEndpoint}/${match.params.id}`}>
+const ViewCourse = (props) => (
+    <DataComponent endpoint={`${Config.CoursesEndpoint}/${props.match.params.id}`}>
     {
         (data, isLoading) => {
             return (
                 isLoading
                 ? <Loader />
-                : <CourseDetails {...data} />
+                : <CourseDetails {...data} {...props}/>
             )
         }
     }

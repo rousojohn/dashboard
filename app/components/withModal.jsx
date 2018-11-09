@@ -4,15 +4,13 @@ import { Modal, Button } from 'react-bootstrap'
 
  const withModal = ({title}) => (WrappedComponent) => {
     class withModalComponent extends Component {
-
         handleClose = () => {
             this.props.history.go(-1)
-            this.setState({show: false})
         }
 
         render() {
             return (
-                <Modal.Dialog style={{ overflow: 'auto' }} onHide={this.handleClose}>
+                <Modal.Dialog style={{ overflow: 'auto' }}>
                     <Modal.Header>
                         <Modal.Title>{title}</Modal.Title>
                     </Modal.Header>

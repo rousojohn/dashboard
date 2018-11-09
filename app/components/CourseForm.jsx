@@ -5,7 +5,10 @@ import { Form, FormGroup, ControlLabel, FormControl, Checkbox,
 import DataComponent from '../datacomponents/DataComponent'
 import Config from '../conf.json'
 import Loader from '../components'
+<<<<<<< HEAD
 import '../app.css'
+=======
+>>>>>>> c483cc226c57994cdc7cb81786023a6915d4d218
 
 import { Post, Put } from '../datacomponents/SaveData'
 
@@ -73,7 +76,7 @@ class CourseForm extends React.Component {
         e.preventDefault()
         try {
             if (this.state.course.id)
-                await Put(`${Config.CoursesEndpoint}/${this.state.course.id}`, this.state.course)
+                await Put(Config.CoursesEndpoint, this.state.course.id, this.state.course)
             else
                 await Post(`${Config.CoursesEndpoint}`, this.state.course)
         } catch (e) {
@@ -204,7 +207,7 @@ class CourseForm extends React.Component {
     }
 }
 
-const FieldInputGroup = ({controlId, label, type, componentClass, cssClass, value, name, inputgroupAddon, onChange}) => {
+const FieldInputGroup = ({controlId, label, type, componentClass, value, name, inputgroupAddon, onChange}) => {
     return (
         <FormGroup controlId={controlId}>
             <ControlLabel>{label}</ControlLabel>
@@ -212,13 +215,13 @@ const FieldInputGroup = ({controlId, label, type, componentClass, cssClass, valu
                 (inputgroupAddon)
                 ? <InputGroup>
                     { componentClass 
-                        ? <FormControl componentClass={componentClass} className={cssClass} placeholder={label} value={value} name={name} onChange={onChange} />
+                        ? <FormControl componentClass={componentClass} placeholder={label} value={value} name={name} onChange={onChange} />
                         : <FormControl type={type ? type : ''} placeholder={label} value={value} name={name} onChange={onChange} /> 
                     }                    
                     <InputGroup.Addon>{inputgroupAddon}</InputGroup.Addon>
                   </InputGroup>
                 : componentClass 
-                    ? <FormControl componentClass={componentClass} className={cssClass} placeholder={label} value={value} name={name} onChange={onChange} />
+                    ? <FormControl componentClass={componentClass} placeholder={label} value={value} name={name} onChange={onChange} />
                     : <FormControl type={type ? type : ''} placeholder={label} value={value} name={name} onChange={onChange} />
             }
         </FormGroup>

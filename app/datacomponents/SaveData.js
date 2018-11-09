@@ -12,13 +12,23 @@ const Post = async (endpoint, obj) => {
     }
 }
 
-const Put = async (endpoint, obj) => {
+const Put = async (endpoint, id, obj) => {
     try {
-        let res = await axios.put(`${Domain}${endpoint}`, obj)
+        let res = await axios.put(`${Domain}${endpoint}/${id}`, obj)
         return res
     } catch (e) {
         throw e
     }
 }
 
-export { Post, Put }
+const Delete = async (endpoint, id) => {
+    console.log(endpoint, id)
+    try {
+        let res = await axios.delete(`${Domain}${endpoint}/${id}`)
+    }
+    catch (e) {
+        throw e
+    }
+}
+
+export { Post, Put, Delete }

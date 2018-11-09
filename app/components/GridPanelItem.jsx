@@ -15,9 +15,11 @@ const GridPanelItem = ({id, title, open, price, dates, link}) => {
             <td>{open ? <Glyphicon glyph='glyphicon glyphicon-ok' /> : ''}</td>
             <td>{price.normal}</td>
             <td>{dates.start_date} - {dates.end_date}</td>
-            <td><Button bsStyle="info" bsSize="xsmall">
-                    <NavLink to={'/'+ link +'/'+id} style={navlinkStyle}>View details</NavLink>
-                </Button>
+            <td><NavLink to={'/'+ link +'/'+id} style={navlinkStyle}>
+                    <Button bsStyle="info" bsSize="xsmall">
+                        View details
+                    </Button>
+                </NavLink>
             </td>
         </tr>
     )
