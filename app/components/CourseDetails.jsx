@@ -5,7 +5,7 @@ import { Delete } from '../datacomponents/SaveData'
 
 import Config from '../conf.json'
 
-const CourseDetails = ({id, title,imagePath,price,open,duration,dates, description}) => (
+const CourseDetails = ({id, title,imagePath,price,open,duration,dates, description, history}) => (
     <Grid>
         <Row>
             <Col md={12}>
@@ -44,22 +44,27 @@ const CourseDetails = ({id, title,imagePath,price,open,duration,dates, descripti
                         <Button bsStyle='primary'>Edit</Button>
                     </NavLink>
                     
-                    <Button bsStyle='danger' href='/courses' onClick={(e) => deleteClick(e, id)}>Delete</Button>
+                    <NavLink to='/courses' onClick={(e) => deleteClick(e, id, history)}>
+                        <Button bsStyle='danger'>Delete</Button>
+                    </NavLink>
+                    
                 </ButtonToolbar>
             </Col>
         </Row>
     </Grid>
 )
 
-const deleteClick = async (e, id) => {
+const deleteClick = async (e, id, history) => {
+    e.preventDefault();
     try {
         await Delete(Config.CoursesEndpoint, id)
+        history.go(-1)
     }
     catch (e) {
         alert('Ooops something went wrong')
         return
     }
-    BrowserRouter.history.go(-1)
+    //
 }
 
 export default CourseDetails

@@ -26,7 +26,6 @@ class DataComponent extends Component {
 
     render() {
         const { data, isLoading } = this.state
-        console.log(data)
         return this.props.children(data, isLoading)
     }
 }
