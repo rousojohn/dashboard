@@ -5,6 +5,9 @@ import { Dash, Courses, NotFound, AddCourse, ViewCourse } from './containers'
 import { Header } from './components'
 import '././app.css'
 
+// import DataComponent from '../datacomponents/DataComponent'
+// import Config from '../conf.json'
+
 
 ReactDOM.render(
   <BrowserRouter>

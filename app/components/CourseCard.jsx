@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { Col, Panel, Image, Button, Glyphicon } from 'react-bootstrap'
 
 const navlinkStyle = {
@@ -15,8 +15,10 @@ const CourseCard = ({id, title,imagePath,price,open,duration,dates}) => {
                     <Image src={imagePath} responsive />
                     <div>
                         Price:&nbsp;<strong>{price.normal} <Glyphicon glyph='glyphicon glyphicon-euro' /></strong>
+                        &nbsp;
                         |
-                        Bookable:&nbsp;<strong>{open ? <Glyphicon glyph='glyphicon glyphicon-ok' /> : '' } </strong>
+                        &nbsp;
+                        Bookable:&nbsp;<strong>{open ? <Glyphicon glyph='glyphicon glyphicon-ok' /> : <Glyphicon glyph='glyphicon glyphicon-remove' />  } </strong>
                     </div>
                     <div>
                         Duration:&nbsp;<strong>{duration}</strong>

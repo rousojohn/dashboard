@@ -11,7 +11,7 @@ import { Modal, Button } from 'react-bootstrap'
         render() {
             return (
                 <Modal.Dialog style={{ overflow: 'auto' }}>
-                    <Modal.Header closeButton>
+                    <Modal.Header>
                         <Modal.Title>{title}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>

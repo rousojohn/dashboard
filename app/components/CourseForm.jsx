@@ -5,6 +5,7 @@ import { Form, FormGroup, ControlLabel, FormControl, Checkbox,
 import DataComponent from '../datacomponents/DataComponent'
 import Config from '../conf.json'
 import Loader from '../components'
+import '../app.css'
 
 import { Post, Put } from '../datacomponents/SaveData'
 
@@ -108,12 +109,14 @@ class CourseForm extends React.Component {
                             label='Title'
                             type='text'
                             value={_course.title}
+                            glyph='text-color'
                             name='title'
                             onChange={this.handleUserInput} />
 
                 <FieldInputGroup controlId='formDuration'
                             label='Duration'
                             type='text'
+                            glyph='time'
                             value={_course.duration}
                             onChange={this.handleUserInput}
                             name='duration' />
@@ -122,16 +125,17 @@ class CourseForm extends React.Component {
                             label='Image path'
                             type='text'
                             value={_course.imagePath}
+                            glyph='picture'
                             name='imagePath'
                             onChange={this.handleUserInput} />
                 
                 <FormGroup controlId='formBookable'>
-                    <ControlLabel>Bookable</ControlLabel>
+                    <ControlLabel><Glyphicon glyph='glyphicon glyphicon-briefcase' /> Bookable</ControlLabel>
                     <Checkbox name='open' onChange={this.handleUserInput} checked={_course.open}>Bookable</Checkbox>
                 </FormGroup>
 
                 <FormGroup controlId='formInstructors'>
-                    <ControlLabel>Instructors</ControlLabel>
+                    <ControlLabel><Glyphicon glyph='glyphicon glyphicon-education' /> Instructors</ControlLabel>
                     <DataComponent endpoint={Config.IntstructorsEndpoint}>
                     {
                         (data, isLoading) => (
@@ -150,13 +154,17 @@ class CourseForm extends React.Component {
                     </DataComponent>
                 </FormGroup>
 
+                
                 <FieldInputGroup controlId='formDescription'
                             label='Description'
                             componentClass = 'textarea'
+                            cssClass = 'form-textarea-limited'
+                            glyph = 'book'
+                            name = 'description'
                             value={_course.description}
                             onChange={this.handleUserInput} />
 
-                <h4>Dates</h4>
+                <h4><Glyphicon glyph='glyphicon glyphicon-calendar' /> Dates</h4>
                 <FieldInputGroup controlId='formStartDate'
                             label='Start date'
                             type='text'
@@ -170,7 +178,7 @@ class CourseForm extends React.Component {
                             name='dates.end_date'
                             value={_course.dates.end_date}
                             onChange={this.handleUserInput} />
-                <h4>Price</h4>
+                <h4><Glyphicon glyph='glyphicon glyphicon-euro' /> Price</h4>
 
                 <FieldInputGroup controlId='formPriceEarly'
                                     label='Early bid'
@@ -190,8 +198,8 @@ class CourseForm extends React.Component {
 
                 
                 <ButtonToolbar>
+                    <Button bsStyle="success" type='submit' >Save Changes</Button>
                     <Button onClick={this.props.handleClose}>Close</Button>
-                    <Button bsStyle="primary" type='submit' >Save changes</Button>
                 </ButtonToolbar>
                 
             </Form>
@@ -202,25 +210,32 @@ class CourseForm extends React.Component {
     }
 }
 
-const FieldInputGroup = ({controlId, label, type, componentClass, value, name, inputgroupAddon, onChange}) => {
+const FieldInputGroup = ({controlId, label, type, componentClass, cssClass, value, glyph, name, inputgroupAddon, onChange}) => {
     return (
         <FormGroup controlId={controlId}>
+            {glyph ? <Glyphicon glyph={`glyphicon glyphicon-${glyph}`} /> : ''}&nbsp;
             <ControlLabel>{label}</ControlLabel>
             {
                 (inputgroupAddon)
                 ? <InputGroup>
                     { componentClass 
-                        ? <FormControl componentClass={componentClass} placeholder={label} value={value} name={name} onChange={onChange} />
-                        : <FormControl type={type ? type : ''} placeholder={label} value={value} name={name} onChange={onChange} /> 
+                        ? <FormControl componentClass={componentClass} className={cssClass} placeholder={label} value={value} name={name} onChange={onChange} />
+                        : <FormControl type={type ? type : ''} placeholder={label} className={cssClass} value={value} name={name} onChange={onChange} /> 
                     }                    
                     <InputGroup.Addon>{inputgroupAddon}</InputGroup.Addon>
                   </InputGroup>
                 : componentClass 
-                    ? <FormControl componentClass={componentClass} placeholder={label} value={value} name={name} onChange={onChange} />
-                    : <FormControl type={type ? type : ''} placeholder={label} value={value} name={name} onChange={onChange} />
+                    ? <FormControl componentClass={componentClass} className={cssClass} placeholder={label} value={value} name={name} onChange={onChange} />
+                    : <FormControl type={type ? type : ''} className={cssClass} placeholder={label} value={value} name={name} onChange={onChange} />
             }
         </FormGroup>
     )
 }
+
+const addGlyph = (label, glyph) => (
+    <>
+        <Glyphicon glyph={`glyphicon glyphicon-${glyph}`} /> {label}
+    </>
+)
 
 export default CourseForm
