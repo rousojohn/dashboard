@@ -1,9 +1,17 @@
 import React from 'react'
-import { NavLink, BrowserRouter } from 'react-router-dom'
-import { Image, Grid, Row, Col, Glyphicon, ButtonToolbar, Button, Jumbotron } from 'react-bootstrap'
+import { NavLink } from 'react-router-dom'
+import { Grid, Row, Col, Glyphicon, Button, Jumbotron } from 'react-bootstrap'
 import { Delete } from '../datacomponents/SaveData'
 import '../app.css'
 import Config from '../conf.json'
+
+const applyJumboImageStyle = (imagePath) => ({
+    backgroundImage: `url(${imagePath})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'top',
+    minHeight: 100,
+    height: 400
+});
 
 const CourseDetails = ({id, title,imagePath,price,open,duration,dates, description, history}) => (
     
@@ -28,7 +36,7 @@ const CourseDetails = ({id, title,imagePath,price,open,duration,dates, descripti
         <Row >
             <Col md={12}>
                 {/* <Image src={imagePath} responsive rounded className='img-fluid'/>  */}
-                <Jumbotron style={{backgroundImage: `url(${imagePath})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'top'}} className='img-fluid'></Jumbotron>
+                <Jumbotron style={applyJumboImageStyle(imagePath)} ></Jumbotron>
             </Col>
             <Col md={12} dangerouslySetInnerHTML={{__html: description}}>
             </Col>

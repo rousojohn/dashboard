@@ -9,6 +9,11 @@ import '../app.css'
 
 import { Post, Put } from '../datacomponents/SaveData'
 
+
+const textareaLimit = {
+    resize: 'vertical'
+}
+
 class CourseForm extends React.Component {
     courseDef = {
             id: undefined,
@@ -158,7 +163,7 @@ class CourseForm extends React.Component {
                 <FieldInputGroup controlId='formDescription'
                             label='Description'
                             componentClass = 'textarea'
-                            cssClass = 'form-textarea-limited'
+                            controlStyle = {textareaLimit}
                             glyph = 'book'
                             name = 'description'
                             value={_course.description}
@@ -210,7 +215,7 @@ class CourseForm extends React.Component {
     }
 }
 
-const FieldInputGroup = ({controlId, label, type, componentClass, cssClass, value, glyph, name, inputgroupAddon, onChange}) => {
+const FieldInputGroup = ({controlId, label, type, componentClass, controlStyle, value, glyph, name, inputgroupAddon, onChange}) => {
     return (
         <FormGroup controlId={controlId}>
             {glyph ? <Glyphicon glyph={`glyphicon glyphicon-${glyph}`} /> : ''}&nbsp;
@@ -219,14 +224,14 @@ const FieldInputGroup = ({controlId, label, type, componentClass, cssClass, valu
                 (inputgroupAddon)
                 ? <InputGroup>
                     { componentClass 
-                        ? <FormControl componentClass={componentClass} className={cssClass} placeholder={label} value={value} name={name} onChange={onChange} />
-                        : <FormControl type={type ? type : ''} placeholder={label} className={cssClass} value={value} name={name} onChange={onChange} /> 
+                        ? <FormControl componentClass={componentClass} style={controlStyle} placeholder={label} value={value} name={name} onChange={onChange} />
+                        : <FormControl type={type ? type : ''} placeholder={label} style={controlStyle} value={value} name={name} onChange={onChange} /> 
                     }                    
                     <InputGroup.Addon>{inputgroupAddon}</InputGroup.Addon>
                   </InputGroup>
                 : componentClass 
-                    ? <FormControl componentClass={componentClass} className={cssClass} placeholder={label} value={value} name={name} onChange={onChange} />
-                    : <FormControl type={type ? type : ''} className={cssClass} placeholder={label} value={value} name={name} onChange={onChange} />
+                    ? <FormControl componentClass={componentClass} style={controlStyle} placeholder={label} value={value} name={name} onChange={onChange} />
+                    : <FormControl type={type ? type : ''} style={controlStyle} placeholder={label} value={value} name={name} onChange={onChange} />
             }
         </FormGroup>
     )
